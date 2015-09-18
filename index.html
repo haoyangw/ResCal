@@ -7,40 +7,50 @@
 <p><b><h2>GPA calculator</h2></b></p>
 <form action="" name="gpa">
 Enter the gpa of your eight subjects in the 8 boxes below:<br>
-<input type="text" name="gpa1">
+<input type="text" name="gpa1"/>
 <br>
-<input type="text" name="gpa2">
+<input type="text" name="gpa2"/>
 <br>
-<input type="text" name="gpa3">
+<input type="text" name="gpa3"/>
 <br>
-<input type="text" name="gpa4">
+<input type="text" name="gpa4"/>
 <br>
-<input type="text" name="gpa5">
+<input type="text" name="gpa5"/>
 <br>
-<input type="text" name="gpa6">
+<input type="text" name="gpa6"/>
 <br>
-<input type="text" name="gpa7">
+<input type="text" name="gpa7"/>
 <br>
-<input type="text" name="gpa8">
+<input type="text" name="gpa8"/>
 <br>
-<input type="button" name="submit" value="Calculate" onClick="calcGPA(this.form)">
+<input type="button" name="submit" value="Calculate" onClick="calcGPA(this.form)"/>
 <br><br><b>Your average GPA:</b><br>
-<input type="text" name="GPA">
+<input type="text" name="GPA"/>
 </form>
 <p><b><h2>Raw score calculator</h2></b></p>
 <form action="" name="raw">
 Enter your old score:<br>
-<input type="text" name="oldscore"><br>
+<input type="text" name="oldscore"/><br>
 Enter your old score's total weightage:<br>
-<input type="text" name="oldper"><br>
+<input type="text" name="oldper"/><br>
 Enter your new score:<br>
-<input type="text" name="newscore"><br>
+<input type="text" name="newscore"/><br>
 Enter your new score's total weightage:<br>
-<input type="text" name="newper">
+<input type="text" name="newper"/>
 <br>
-<input type="button" name="submitRaw" value="Calculate" onClick="calcScore(this.form)">
+<input type="button" name="submitRaw" value="Calculate" onClick="calcScore(this.form)"/>
 <br><br><b>Your new overall score:</b><br>
-<input type="text" name="rawScore">
+<input type="text" name="rawScore"/>
+</form>
+<p><b><h2>Summative score calculator</h2></b></p>
+<form action="" name="summative">
+Enter your score for the summative:<br>
+<input type="text" name="scor"/><br>
+Enter the maximum score for the summative:<br>
+<input type="text" name="tot"/><br>
+<input type="button" name="submitSum" value="Calculate" onclick="calcSumm(this.form)"/>
+<br><br><b>Your score upon 100%:</b><br>
+<input type="text" name="overallScore"/>
 </form>
 <script type="text/javascript">
 function calcGPA(form) {
@@ -67,6 +77,13 @@ function calcScore(form) {
 	var comb = perComb / (+oldPer + +newPer) * 100;
 	comb = Math.ceil(+comb);
 	form.rawScore.value = comb;
+}
+function calcSumm(form) {
+	var achieved = form.scor.value;
+	var max = form.tot.value;
+	var per = (+achieved / +max) * 100;
+	per = Math.ceil(+per);
+	form.overallScore.value = per;
 }
 </script>
 </body>
