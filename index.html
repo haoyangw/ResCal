@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GPA/Raw score calculator</title>
+</head>
+<body>
+<p><b>GPA calculator</b></p>
+<form action="" name="gpa">
+Enter the gpa of your eight subjects in the 8 boxes below:<br>
+<input type="text" name="gpa1">
+<br>
+<input type="text" name="gpa2">
+<br>
+<input type="text" name="gpa3">
+<br>
+<input type="text" name="gpa4">
+<br>
+<input type="text" name="gpa5">
+<br>
+<input type="text" name="gpa6">
+<br>
+<input type="text" name="gpa7">
+<br>
+<input type="text" name="gpa8">
+<br>
+<input type="button" name="submit" value="Calculate" onClick="calcGPA(this.form)">
+<br><br>Your average GPA:<br>
+<input type="text" name="GPA">
+</form>
+<p><b>calculator</b></p>
+<form action="" name="raw"><br>
+Enter your old score:<br>
+<input type="text" name="oldscore"><br>
+Enter your old score's total weightage:<br>
+<input type="text" name="oldper"><br>
+Enter your new score:<br>
+<input type="text" name="newscore"><br>
+Enter your new score's total weightage:<br>
+<input type="text" name="newper">
+<br>
+<input type="button" name="submitRaw" value="Calculate" onClick="calcScore(this.form)">
+<br><br>Your new overall score:<br>
+<input type="text" name="rawScore">
+</form>
+<script type="text/javascript">
+function calcGPA(form) {
+	var gpa1 = form.gpa1.value;
+	var gpa2 = form.gpa2.value;
+	var gpa3 = form.gpa3.value;
+	var gpa4 = form.gpa4.value;
+	var gpa5 = form.gpa5.value;
+	var gpa6 = form.gpa6.value;
+	var gpa7 = form.gpa7.value;
+	var gpa8 = form.gpa8.value;
+	var avgGPA = (+gpa1 + +gpa2 + +gpa3 + +gpa4 + +gpa5 + +gpa6 + +gpa7 + +gpa8) / 8;
+	avgGPA = +avgGPA.toFixed(2);
+	form.GPA.value = avgGPA;
+}
+function calcScore(form) {
+	var oldScore = form.oldscore.value;
+	var oldPer = form.oldper.value;
+	var oldPerScore = (+oldScore * +oldPer) / 100;
+	var newScore = form.newscore.value;
+	var newPer = form.newper.value;
+	var newPerScore = (+newScore * +newPer) / 100;
+	var perComb = +oldPerScore + +newPerScore;
+	var comb = perComb / (+oldPer + +newPer) * 100;
+	comb = Math.ceil(+comb);
+	form.rawScore.value = comb;
+}
+</script>
+</body>
+</html>
